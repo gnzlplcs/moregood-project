@@ -1,15 +1,24 @@
-import './App.css';
-
-const baseUrl = "https://moregooder-api-stage.herokuapp.com";
-const workspaceId = process.env.REACT_APP_WORKSPACE_ID;
-const API_KEY = process.env.REACT_APP_API_KEY;
-const parentType = "contact";
-const query = "data=trait";
+import { useEffect } from "react";
+import bearer from "./utils/bearer";
+import url from "./utils/url";
+import "./App.css";
 
 function App() {
-  const url = `${baseUrl}/${workspaceId}/${parentType}?${query}`;
+  const fetchApi = async () => {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `${bearer}`,
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    });
+    const responseJSON = await response.json();
+    console.log(responseJSON.body);
+  };
 
-
+  useEffect(() => {
+    fetchApi();
+  }, []);
 
   return (
     <div className="App">
