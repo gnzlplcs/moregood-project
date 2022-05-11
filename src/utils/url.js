@@ -4,7 +4,8 @@ const baseUrl = "https://moregooder-api-stage.herokuapp.com";
 const workspaceId = process.env.REACT_APP_WORKSPACE_ID;
 
 const parentType = "contact";
-const query = "data=tag";
-const url = `${baseUrl}/${workspaceId}/${parentType}?${query}`;
+
+
+const url = `${baseUrl}/${workspaceId}/${parentType}`;
 
 export default url;

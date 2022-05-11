@@ -2,13 +2,17 @@ import { useEffect, useState } from "react";
 import bearer from "./utils/bearer";
 import url from "./utils/url";
 import "./App.css";
+import Contacts from "./Layout/Contacts";
+
+// query to get data from all contacts
+const query = "data=tag";
 
 function App() {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
     try {
-      fetch(url, {
+      fetch(`${url}/?${query}`, {
         method: "GET",
         headers: {
           Authorization: `${bearer}`,
@@ -27,9 +31,7 @@ function App() {
   return (
     <div className="App">
       <h1>Contacts</h1>
-      {contacts.map((contact) => (
-        <div key={contact.id}>Contact {contact.id}</div>
-      ))}
+      <Contacts list={contacts}/>
     </div>
   );
 }
