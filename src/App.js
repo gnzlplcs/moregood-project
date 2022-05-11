@@ -7,31 +7,29 @@ function App() {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
-    fetchApi();
-  }, []);
-
-  const fetchApi = async () => {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization: `${bearer}`,
-        "Content-Type": "application/json; charset=utf-8",
-      },
-    });
-    const responseJSON = await response.json();
-    setContacts(responseJSON.body);
-  };
+    try {
+      fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `${bearer}`,
+          "Content-Type": "application/json; charset=utf-8",
+        }
+      })
+      .then(response => response.json())
+      .then(data => setContacts(data.body))
+    } catch (err) {
+      console.error(err)
+    }
+  }, [])
 
   console.log(contacts)
 
-  const contactsList = contacts.map((contact) => (
-    <li key={contact.id}>{contact.id}</li>
-  ));
-
   return (
     <div className="App">
-      <h1>MoreGood Project</h1>
-      <ul>{contactsList}</ul>
+      <h1>Contacts</h1>
+      {contacts.map((contact) => (
+        <div key={contact.id}>Contact {contact.id}</div>
+      ))}
     </div>
   );
 }
