@@ -1,37 +1,27 @@
 import { useEffect, useState } from "react";
-import bearer from "./utils/bearer";
-import url from "./utils/url";
+import axios from "axios";
+import { queryUrl } from "./utils/url";
+import customHeaders from "./utils/customHeaders";
 import "./App.css";
-import Contacts from "./Layout/Contacts";
-
-// query to get data from all contacts
-const query = "data=tag";
 
 function App() {
-  const [contacts, setContacts] = useState([]);
+  const [rawData, setRawData] = useState([]);
 
   useEffect(() => {
-    try {
-      fetch(`${url}/?${query}`, {
-        method: "GET",
-        headers: {
-          Authorization: `${bearer}`,
-          "Content-Type": "application/json; charset=utf-8",
-        }
-      })
-      .then(response => response.json())
-      .then(data => setContacts(data.body))
-    } catch (err) {
-      console.error(err)
-    }
-  }, [])
+    getData();
+  }, []);
 
-  console.log(contacts)
+  const getData = () => {
+    axios(queryUrl, customHeaders)
+      .then((res) => setRawData(res.data.body))
+      .catch((err) => console.log(`Error fetching data: ${err}`));
+  };
+
+  console.log(rawData)
 
   return (
     <div className="App">
       <h1>Contacts</h1>
-      <Contacts list={contacts}/>
     </div>
   );
 }
