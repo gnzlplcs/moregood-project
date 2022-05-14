@@ -4,7 +4,7 @@ import { getByIdUrl } from "../utils/url";
 import customHeaders from "../utils/customHeaders";
 
 const Contact = (props) => {
-  const [contact, setContact] = useState([]);
+  const [contactTraits, setContactTraits] = useState([]);
 
   useEffect(() => {
     getContactById(props.id);
@@ -12,13 +12,29 @@ const Contact = (props) => {
 
   const getContactById = (id) => {
     axios(`${getByIdUrl}/${id}`, customHeaders)
-      .then((res) => setContact(res.data.body.traits))
+      .then((res) => setContactTraits(res.data.body.traits))
       .catch((err) => console.error(`Error fetching contacts: ${err}`));
   };
 
-  console.log(contact);
+  const [contactName, setContactName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
 
-  return <div>Contact {props.id}</div>;
+  useEffect(() => {
+    getName();
+    getEmail();
+  }, [contactTraits]);
+
+  const getName = () =>
+    contactTraits.map(
+      (item) => item.name === "name" && setContactName(item.value)
+    );
+
+  const getEmail = () =>
+    contactTraits.map(
+      (item) => item.name === "email" && setContactEmail(item.value)
+    );
+
+  return <div>{contactName} {contactEmail}</div>;
 };
 
 export default Contact;
