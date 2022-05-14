@@ -4,6 +4,7 @@ import { queryUrl } from "./utils/url";
 import customHeaders from "./utils/customHeaders";
 import Contacts from "./components/Contacts";
 import "./App.css";
+import SearchBox from "./components/SearchBox";
 
 function App() {
   const [rawData, setRawData] = useState([]);
@@ -28,6 +29,7 @@ function App() {
   return (
     <div className="App">
       <h1>Contacts</h1>
+      <SearchBox />
       <Contacts list={idCollection}/>
     </div>
   );
