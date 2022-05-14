@@ -8,6 +8,7 @@ import SearchBox from "./components/SearchBox";
 
 function App() {
   const [rawData, setRawData] = useState([]);
+  const [searchInput, setSearchInput] = useState('')
 
   useEffect(() => {
     getData();
@@ -26,11 +27,15 @@ function App() {
     setIdCollection(getId)
   }, [rawData])
 
+  const handleChange = (e) => {
+    setSearchInput(e.target.value.toLowerCase())
+  }
+
   return (
     <div className="App">
       <h1>Contacts</h1>
-      <SearchBox />
-      <Contacts list={idCollection}/>
+      <SearchBox onChange={handleChange}/>
+      <Contacts list={idCollection} filteredSearch={searchInput}/>
     </div>
   );
 }
