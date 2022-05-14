@@ -96,19 +96,20 @@ const Contact = (props) => {
     contactFavColor,
     contactStreet,
     contactTagArray,
-    handleModal
+    handleModal,
   };
 
   return (
     <div>
-      {contactName.toLocaleLowerCase().includes(props.filter) && (
+      {(contactName.toLocaleLowerCase().includes(props.filter) ||
+        contactEmail.toLocaleLowerCase().includes(props.filter)) && (
         <div>
           <h2>{contactName}</h2>
           <p>{contactEmail}</p>
           <button onClick={handleModal}>More details</button>
           {modal && <Modal info={contactInfo} />}
-        </div>)
-      }
+        </div>
+      )}
     </div>
   );
 };
