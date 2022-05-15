@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/moregood-project/static/css/main.fc82f439.css",
+    "main.js": "/moregood-project/static/js/main.536d1724.js",
+    "index.html": "/moregood-project/index.html",
+    "main.fc82f439.css.map": "/moregood-project/static/css/main.fc82f439.css.map",
+    "main.536d1724.js.map": "/moregood-project/static/js/main.536d1724.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc82f439.css",
+    "static/js/main.536d1724.js"
+  ]
+}
