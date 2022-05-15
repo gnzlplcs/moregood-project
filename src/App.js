@@ -8,7 +8,7 @@ import SearchBox from "./components/SearchBox";
 
 function App() {
   const [rawData, setRawData] = useState([]);
-  const [searchInput, setSearchInput] = useState('')
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     getData();
@@ -16,26 +16,27 @@ function App() {
 
   const getData = () => {
     axios(queryUrl, customHeaders)
-    .then((res) => setRawData(res.data.body))
-    .catch((err) => console.error(`Error fetching data: ${err}`));
+      .then((res) => setRawData(res.data.body))
+      .catch((err) => console.error(`Error fetching data: ${err}`));
   };
 
-  const getId = rawData.map(item => item.id)
+  const getId = rawData.map((item) => item.id);
 
-  const [idCollection, setIdCollection] = useState([])
+  const [idCollection, setIdCollection] = useState([]);
+  
   useEffect(() => {
-    setIdCollection(getId)
-  }, [rawData])
+    setIdCollection(getId);
+  }, [rawData]);
 
   const handleChange = (e) => {
-    setSearchInput(e.target.value.toLowerCase())
-  }
+    setSearchInput(e.target.value.toLowerCase());
+  };
 
   return (
     <div className="App">
       <h1>Contacts</h1>
-      <SearchBox onChange={handleChange}/>
-      <Contacts list={idCollection} filteredSearch={searchInput}/>
+      <SearchBox onChange={handleChange} />
+      <Contacts list={idCollection} filteredSearch={searchInput} />
     </div>
   );
 }

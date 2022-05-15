@@ -1,8 +1,9 @@
 .container-modal {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90vw;
+  height: 90vh;
   border: 2px solid darkslategray;
   background-color: lightgray;
   z-index: 1;
