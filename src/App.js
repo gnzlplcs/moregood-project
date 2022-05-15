@@ -23,7 +23,7 @@ function App() {
   const getId = rawData.map((item) => item.id);
 
   const [idCollection, setIdCollection] = useState([]);
-  
+
   useEffect(() => {
     setIdCollection(getId);
   }, [rawData]);
@@ -33,10 +33,10 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Contacts</h1>
+    <div className="App bg-light mb-3">
+      <h1 className="display-1 text-center">🧔🏻‍♂️ Contacts</h1>
       <SearchBox onChange={handleChange} />
-      <Contacts list={idCollection} filteredSearch={searchInput} />
+      <Contacts className="container-fluid" list={idCollection} filteredSearch={searchInput} />
     </div>
   );
 }

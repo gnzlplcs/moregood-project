@@ -2,13 +2,13 @@ import React from "react";
 
 const Tags = ({ tags }) => {
   const showTags = () =>
-    tags.map((tag, index) => <p key={tag + index}>{tag.name}</p>);
+    tags.map((tag, index) => <p className="card-text display-6" key={tag + index}>{tag.name}</p>);
 
   return (
-    <div>
-      <h2>Tags</h2>
+    <section className="card-body">
+      <h2 className="card-title display-5">🏷️ Tags</h2>
       {tags.length > 0 ? showTags() : "No tags to show"}
-    </div>
+    </section>
   );
 };
 

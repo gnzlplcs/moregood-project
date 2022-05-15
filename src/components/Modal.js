@@ -8,12 +8,17 @@ const Modal = ({ info }) => {
   const { contactName, contactTagArray } = info;
 
   return (
-    <div className="container-modal">
-      <h1>About {contactName}</h1>
-      <Email info={info} />
+    <div className="card card-modal text-white bg-secondary p-3 mb-3">
+      <header className="card-header d-flex justify-content-between">
+        <h1 className="card-title display-4">About {contactName}</h1>
+        <button
+          className="btn-close btn-close-white"
+          onClick={info.handleModal}
+        />
+      </header>
       <Address info={info} />
       <Tags tags={contactTagArray} />
-      <button onClick={info.handleModal}>Close this window</button>
+      <Email info={info} />
     </div>
   );
 };

@@ -103,10 +103,14 @@ const Contact = (props) => {
     <div>
       {(contactName.toLocaleLowerCase().includes(props.filter) ||
         contactEmail.toLocaleLowerCase().includes(props.filter)) && (
-        <div>
-          <h2>{contactName}</h2>
-          <p>{contactEmail}</p>
-          <button onClick={handleModal}>More details</button>
+        <div className="container bg-primary text-white p-3 mb-2 d-flex flex-row justify-content-between align-items-center">
+            <h3 className="display-6 text-left ">{contactName}</h3>
+          <button
+            className="btn btn-warning p-2 align-self-center"
+            onClick={handleModal}
+          >
+            More details
+          </button>
           {modal && <Modal info={contactInfo} />}
         </div>
       )}

@@ -4,17 +4,17 @@ const Address = ({ info }) => {
   const { contactName, contactCountry, contactCity, contactStreet } = info;
 
   return (
-    <div>
-      <h2>Address</h2>
+    <section className="card-body">
+      <h2 className="card-title display-5">🏠 Address</h2>
       {contactStreet &&
-        `${contactName} lives in ${contactStreet}, ${contactCity} ${contactCountry}`}
+        <p className="card-text display-6">{contactName} lives in {contactStreet}, {contactCity} {contactCountry}</p>}
       {!contactStreet && contactCity &&
-        `${contactName} lives in ${contactCity} ${contactCountry}`}
+        <p className="card-text display-6">{contactName} lives in {contactCity} {contactCountry}</p>}
       {!contactStreet && !contactCity && contactCountry &&
-        `${contactName} lives in ${contactCountry}`}
+        <p className="card-text display-6">{contactName} lives in {contactCountry}</p>}
       {!contactStreet && !contactCity && !contactCountry &&
-        `${contactName} has an unknown address`}
-    </div>
+        <p className="card-text display-6">{contactName} has an unknown address</p>}
+    </section>
   );
 };
 

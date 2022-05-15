@@ -1,10 +1,8 @@
-.container-modal {
+.card-modal {
   position: fixed;
-  top: 5%;
-  left: 5%;
-  width: 90vw;
-  height: 90vh;
-  border: 2px solid darkslategray;
-  background-color: lightgray;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
   z-index: 1;
 }
