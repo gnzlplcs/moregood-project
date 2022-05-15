@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="App bg-light mb-3">
-      <h1 className="display-1 text-center">🧔🏻‍♂️ Contacts</h1>
+      <h1 className="display-1 text-center">🧔🏻‍♂️👩🏽 Contacts</h1>
       <SearchBox onChange={handleChange} />
       <Contacts className="container-fluid" list={idCollection} filteredSearch={searchInput} />
     </div>
